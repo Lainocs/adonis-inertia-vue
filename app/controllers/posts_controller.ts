@@ -21,10 +21,10 @@ export default class PostsController {
     return inertia.location('/posts')
   }
 
-  public async show({ inertia, params }: HttpContext) {
+  public async show({ inertia, params, auth }: HttpContext) {
     const post = await Post.find(params.id)
 
-    return inertia.render('Posts/Show', { post })
+    return inertia.render('Posts/Show', { post, user: auth.user })
   }
 
   public async delete({ inertia, params, auth }: HttpContext) {
