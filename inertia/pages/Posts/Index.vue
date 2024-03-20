@@ -2,7 +2,10 @@
 import { Link } from '@inertiajs/vue3';
 import { router } from '@inertiajs/vue3';
 
-defineProps<{posts: any, user: any}>()
+defineProps<{
+	posts: { id: number; title: string; content: string, userId: number }[];
+	user: { id: number; name: string };
+}>()
 
 const deletePost = (postId: number) => {
 	router.delete('/posts/' + postId)
@@ -10,6 +13,7 @@ const deletePost = (postId: number) => {
 </script>
 
 <template>
+	{{ user }}
 	<h1>this is a posts page</h1>
 	<Link href="/posts/create">Create Post</Link> |
 	<Link href="/profile">Profile</Link>

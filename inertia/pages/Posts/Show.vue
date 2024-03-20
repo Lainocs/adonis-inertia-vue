@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { router } from '@inertiajs/vue3';
 
-defineProps<{post: any, user: any}>()
+defineProps<{
+	post: { id: number; title: string; content: string, userId: number };
+	user: { id: number; name: string };
+}>()
 
 const deletePost = (postId: number) => {
 	router.delete('/posts/' + postId)
